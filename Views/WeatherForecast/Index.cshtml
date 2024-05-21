@@ -1,66 +1,35 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<EksamenGruppe7.Models.WeatherForecast>
+
 @{
+    ViewData["Title"] = "Værmeldinger";
 }
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Værmelding</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+<h2>Værmeldinger</h2>
 
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
-
-    <h2>Værmelding</h2>
-
-    <table>
+<table class="table">
+    <thead>
         <tr>
             <th>Id</th>
             <th>Dato</th>
-            <th>Temperatur</th>
+            <th>Temperatur (C&deg;)</th>
             <th>Kommentar</th>
+            <th>Handlinger</th>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>2024-05-21</td>
-            <td>20°C</td>
-            <td>Sol og lett bris</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>2024-05-22</td>
-            <td>18°C</td>
-            <td>Overskyet</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>2024-05-23</td>
-            <td>15°C</td>
-            <td>Regnbyger</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>2024-05-24</td>
-            <td>17°C</td>
-            <td>Delvis skyet</td>
-        </tr>
-    </table>
-</body>
-</html>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Date.ToString("dd-MM-yyyy")</td>
+                <td>@item.Temperature C&deg;</td>
+                <td>@item.Comment</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Oppdater</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Slett</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-primary" asp-action="Create">Opprett ny</a>

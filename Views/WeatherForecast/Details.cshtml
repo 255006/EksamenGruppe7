@@ -1,0 +1,37 @@
+﻿@model EksamenGruppe7.Models.WeatherForecast
+
+@{
+    ViewData["Title"] = "Værmeldinger detaljer";
+}
+
+<h1>Værmeldinger detaljer</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Temperature)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Temperature)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+    </dl>
+</div>
+<div>
+    <br />
+    <a asp-action="Edit" asp-route-id="@Model.Id">Oppdater</a>
+    <br/>
+    <a asp-action="Index">Tilbake til værmeldinger</a>
+</div>
